@@ -1,13 +1,16 @@
 import streamlit as st
 import mysql.connector
+import os 
+
 
 conn = mysql.connector.connect(
-    host="mysql.railway.internal",
-    port=3306,  
-    user="root",
-    password="XbZIsALMFmhSmTAfkDGftdgzcTsCjQMx",
-    database="awos"
+    host=os.environ.get("MYSQLHOST"),
+    port=os.environ.get("MYSQLPORT"),
+    user=os.environ.get("MYSQLUSER"),
+    password=os.environ.get("MYSQL_ROOT_PASSWORD"), # O la variable de contraseña correcta
+    database=os.environ.get("MYSQL_DATABASE")
 )
+
 cursor = conn.cursor()
 
 st.title("UNIVERSIDAD TECNOLOGICA SANTA CATARINA")
@@ -19,7 +22,6 @@ apellidos = st.text_input("Apellidos")
 nombres = st.text_input("Nombres")
 matricula = st.number_input("Matrícula", min_value=0, step=1)
 correo = st.text_input("Correo")
-
 
 if st.button("Guardar en base de datos"):
     if apellidos and nombres and matricula and correo:
