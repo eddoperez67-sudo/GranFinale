@@ -1,16 +1,13 @@
 import streamlit as st
 import mysql.connector
-import os 
-
 
 conn = mysql.connector.connect(
-    host=os.environ.get("MYSQLHOST"),
-    port=os.environ.get("MYSQLPORT"),
-    user=os.environ.get("MYSQLUSER"),
-    password=os.environ.get("MYSQL_ROOT_PASSWORD"), # O la variable de contraseña correcta
-    database=os.environ.get("MYSQL_DATABASE")
+    host="gondola.proxy.rlwy.net", 
+    port=38111,  
+    user="root",
+    password="XbZIsALMFmhSmTAfkDGftdgzcTsCjQMx",
+    database="awos"
 )
-
 cursor = conn.cursor()
 
 st.title("UNIVERSIDAD TECNOLOGICA SANTA CATARINA")
